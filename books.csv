@@ -1,0 +1,2 @@
+BookID,Title,Author,ISBN,PublicationYear,Genre,LoanStatus,BaseLoanFee,BookType
+1,Automata,tajawar,2142342134,2000,sci,false,20.00,Textbook

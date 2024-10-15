@@ -1,0 +1,4 @@
+LoanID,UserID,BookID,LoanDate,ReturnDate
+1,1,1,15/10/2024,29/10/2024
+,,,,
+1,1,1,2024-10-15,2024-10-29

@@ -4,12 +4,12 @@ public class Textbook extends Book {
     private boolean extended = false;
 
     public Textbook(String bookID, String title, String author, String ISBN, int publicationYear, String genre, double baseLoanFee) {
-        super(bookID, title, author, ISBN, publicationYear, genre, baseLoanFee);
+        super(bookID, title, author, ISBN, publicationYear, genre, baseLoanFee, "Textbook");
     }
 
     @Override
     public double calculateLoanCost(int loanDuration) {
-        double durationCost = loanDuration * 1.5; 
+        double durationCost = loanDuration * 1.5;
         return getBaseLoanFee() + durationCost;
     }
 
@@ -25,5 +25,9 @@ public class Textbook extends Book {
             System.out.println("This textbook cannot be extended further.");
         }
     }
-}
 
+    @Override
+    public String toString() {
+        return "Textbook: " + getTitle() + " by " + getAuthor();
+    }
+}

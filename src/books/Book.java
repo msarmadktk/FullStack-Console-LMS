@@ -9,9 +9,10 @@ public abstract class Book {
     private String genre;
     private boolean loanStatus;
     private double baseLoanFee;
-    private boolean isDamaged; // New attribute for damage status
+    private boolean isDamaged;  // New attribute for damage status
+    private String bookType;  // New attribute for book type
 
-    public Book(String bookID, String title, String author, String ISBN, int publicationYear, String genre, double baseLoanFee) {
+    public Book(String bookID, String title, String author, String ISBN, int publicationYear, String genre, double baseLoanFee, String bookType) {
         this.bookID = bookID;
         this.title = title;
         this.author = author;
@@ -20,7 +21,8 @@ public abstract class Book {
         this.genre = genre;
         this.baseLoanFee = baseLoanFee;
         this.loanStatus = false; 
-        this.isDamaged = false; // Initialize as not damaged
+        this.isDamaged = false;  // Initialize as not damaged
+        this.bookType = bookType;  // Initialize book type
     }
 
     public String getBookID() {
@@ -68,9 +70,16 @@ public abstract class Book {
         return baseLoanFee;
     }
 
+    public String getBookType() {
+        return bookType;  // Getter for bookType
+    }
+
     // Abstract method for loan calculation
-    public abstract double calculateLoanCost(int loanDuration); 
-    
+    public abstract double calculateLoanCost(int loanDuration);
+
     // Abstract method for extension check
-    public abstract boolean isExtendable(); 
+    public abstract boolean isExtendable();
+
+    @Override
+    public abstract String toString();
 }

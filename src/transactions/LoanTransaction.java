@@ -22,8 +22,29 @@ public class LoanTransaction {
         this.extended = false;  // Initialize as not extended
     }
 
-    public String getLoanID() {
+    public LoanTransaction(int loanID2, int userID, int bookID, LocalDate loanDate2, LocalDate returnDate2) {
+		// TODO Auto-generated constructor stub
+    	
+	}
+
+	public LoanTransaction(String loanID2, User user2, Book book2, LocalDate loanDate2, LocalDate returnDate2,
+			double totalFee2, boolean extended2) {
+		// TODO Auto-generated constructor stub
+		   this.loanID = loanID2;
+	        this.user = user2;
+	        this.book = book2;
+	        this.loanDate = loanDate2;
+	        this.returnDate = returnDate2;
+	        this.totalFee = totalFee2;
+	        this.extended = extended2; 
+	}
+
+	public String getLoanID() {
         return loanID;
+    }
+    
+    public boolean isExtended() {
+    	return this.extended;
     }
 
     public User getUser() {
@@ -38,6 +59,17 @@ public class LoanTransaction {
         return loanDate;
     }
 
+    public double getTotalFee() {
+        return totalFee;
+    }
+    
+    public void setTotalFee(double stf) {
+        this.totalFee = stf;
+    }
+    
+    public void setExtended(boolean ex) {
+    	this.extended = ex;
+    }
     public LocalDate getReturnDate() {
         return returnDate;
     }

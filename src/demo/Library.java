@@ -3,6 +3,9 @@ package demo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
+
 import users.User;
 import books.Book;
 import transactions.LoanTransaction;
@@ -18,6 +21,8 @@ public class Library {
         loanTransactions = new ArrayList<>();
     }
 
+ 
+    
     // Getter and setter methods
     public ArrayList<Book> getBooks() {
         return books;
@@ -259,5 +264,78 @@ public class Library {
         return null;
     }
 
-  
+    
+    // Bubble sort and remove duplicates for books based on bookID
+    public void removeDuplicateBooks() {
+        // Bubble sort based on bookID
+        int n = books.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (books.get(j).getBookID().compareTo(books.get(j + 1).getBookID()) > 0) {
+                    // Swap books[j] and books[j+1]
+                    Book temp = books.get(j);
+                    books.set(j, books.get(j + 1));
+                    books.set(j + 1, temp);
+                }
+            }
+        }
+
+        // Remove duplicates after sorting
+        for (int i = 0; i < books.size() - 1; i++) {
+            if (books.get(i).getBookID().equals(books.get(i + 1).getBookID())) {
+                books.remove(i + 1);
+                i--; // Adjust index after removal
+            }
+        }
+    }
+
+    // Bubble sort and remove duplicates for users based on userID
+    public void removeDuplicateUsers() {
+        int n = users.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (users.get(j).getUserID().compareTo(users.get(j + 1).getUserID()) > 0) {
+                    User temp = users.get(j);
+                    users.set(j, users.get(j + 1));
+                    users.set(j + 1, temp);
+                }
+            }
+        }
+
+        for (int i = 0; i < users.size() - 1; i++) {
+            if (users.get(i).getUserID().equals(users.get(i + 1).getUserID())) {
+                users.remove(i + 1);
+                i--;
+            }
+        }
+    }
+
+    // Bubble sort and remove duplicates for loanTransactions based on loanID
+    public void removeDuplicateLoanTransactions() {
+        int n = loanTransactions.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (loanTransactions.get(j).getLoanID().compareTo(loanTransactions.get(j + 1).getLoanID()) > 0) {
+                    LoanTransaction temp = loanTransactions.get(j);
+                    loanTransactions.set(j, loanTransactions.get(j + 1));
+                    loanTransactions.set(j + 1, temp);
+                }
+            }
+        }
+
+        for (int i = 0; i < loanTransactions.size() - 1; i++) {
+            if (loanTransactions.get(i).getLoanID().equals(loanTransactions.get(i + 1).getLoanID())) {
+                loanTransactions.remove(i + 1);
+                i--;
+            }
+        }
+    }
+
+    // Method to remove duplicates from all lists at once
+    public void removeAllDuplicates() {
+        removeDuplicateBooks();
+        removeDuplicateUsers();
+        removeDuplicateLoanTransactions();
+    }
+
 }
